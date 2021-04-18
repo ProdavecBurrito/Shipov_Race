@@ -6,7 +6,7 @@ namespace Game.InputLogic
 {
     internal class InputController : BaseController
     {
-        private readonly ResourcePath _viewPath = new ResourcePath { PathResource = "Prefabs/gyroscopeMove" };
+        private readonly ResourcePath _viewPath = new ResourcePath { PathResource = "Prefabs/EndlessMove" };
         private BaseInputView _view;
 
         public InputController(SubscriptionProperty<float> leftMove, SubscriptionProperty<float> rightMove, Car car)
