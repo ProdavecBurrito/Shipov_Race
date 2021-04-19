@@ -1,5 +1,6 @@
 ﻿using Profile;
 using UnityEngine;
+using Profile.Analytic;
 
 internal sealed class GameStarter : MonoBehaviour
 {
@@ -10,7 +11,7 @@ internal sealed class GameStarter : MonoBehaviour
 
     private void Awake()
     {
-        PlayerProfile profilePlayer = new PlayerProfile(_speedCar);
+        PlayerProfile profilePlayer = new PlayerProfile(_speedCar, new UnityAnalyticTools());
         profilePlayer.CurrentState.Value = GameState.Start;
         _mainController = new MainController(_placeForUi, profilePlayer);
     }
