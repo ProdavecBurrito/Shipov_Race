@@ -6,8 +6,8 @@ namespace Ui
 {
     internal class MainMenuController : BaseController
     {
-
-        private readonly ResourcePath _viewPath = new ResourcePath { PathResource = "Prefabs/MainMenu" };
+        private readonly ResourcePath _mainMenuPath = new ResourcePath { PathResource = "Prefabs/MainMenu" };
+        private readonly ResourcePath _invenventoryPath = new ResourcePath { PathResource = "Prefabs/InventoryView" };
         private readonly PlayerProfile _profilePlayer;
         private MainMenuView _view;
 
@@ -20,9 +20,10 @@ namespace Ui
 
         private MainMenuView LoadView(Transform placeForUi)
         {
-            GameObject objectView = Object.Instantiate(ResourceLoader.LoadPrefab(_viewPath), placeForUi, false);
-            AddGameObjects(objectView);
-            return objectView.GetComponent<MainMenuView>();
+            GameObject mainMenu = Object.Instantiate(ResourceLoader.LoadPrefab(_mainMenuPath), placeForUi, false);
+            GameObject inventotyView = Object.Instantiate(ResourceLoader.LoadPrefab(_invenventoryPath), placeForUi, false);
+            AddGameObjects(mainMenu);
+            return mainMenu.GetComponent<MainMenuView>();
         }
 
         private void StartGame()

@@ -8,6 +8,7 @@ namespace Ui
     {
         [SerializeField] private Button _buttonStart;
         [SerializeField] private GameObject _startBackground;
+        [SerializeField] private TrailRenderer _trailRenderer;
 
         public void Init(UnityAction startGame)
         {

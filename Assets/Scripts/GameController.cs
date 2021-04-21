@@ -15,6 +15,7 @@ namespace Game
             BackgroundController tapeBackgroundController = new BackgroundController(leftMoveDiff, rightMoveDiff);
             InputController inputGameController = new InputController(leftMoveDiff, rightMoveDiff, profilePlayer.CurrentCar);
             CarController carController = new CarController();
+            AbilitiesController abilitiesController = new AbilitiesController();
 
             AddController(inputGameController);
             AddController(tapeBackgroundController);

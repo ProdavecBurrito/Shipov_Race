@@ -24,7 +24,7 @@ namespace Game.Background
         {
             foreach (Background background in _backgrounds)
             {
-                background.Move(-value);
+                background.Move(value);
             }
         }
     }
