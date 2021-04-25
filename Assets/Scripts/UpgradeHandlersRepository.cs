@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 
-public class UpgradeHandlersRepository : BaseController
+public class UpgradeHandlersRepository : IRepository<int, IUpgradeHandler>
 {
-    public IReadOnlyDictionary<int, ICarUpgrade> UpgradeItems => _upgradeItemsMapById;
-    private Dictionary<int, ICarUpgrade> _upgradeItemsMapById = new Dictionary<int, ICarUpgrade>();
+    private readonly Dictionary<int, IUpgradeHandler> _upgradeItemsMapById = new Dictionary<int, IUpgradeHandler>();
 
-    public UpgradeHandlersRepository( List<ItemUpgradeConfig> upgradeItemConfigs)
+    public UpgradeHandlersRepository(List<ItemUpgradeConfig> upgradeItemConfigs)
     {
         PopulateItems(ref _upgradeItemsMapById, upgradeItemConfigs);
     }
 
-    private void PopulateItems( ref Dictionary<int, ICarUpgrade> upgradeHandlersMapByType, List<ItemUpgradeConfig> configs)
+    private void PopulateItems( ref Dictionary<int, IUpgradeHandler> upgradeHandlersMapByType, List<ItemUpgradeConfig> configs)
     {
         foreach (var config in configs)
         {
@@ -19,20 +18,15 @@ public class UpgradeHandlersRepository : BaseController
         }
     }
 
-    private ICarUpgrade CreateHandlerByType(ItemUpgradeConfig config)
+    private IUpgradeHandler CreateHandlerByType(ItemUpgradeConfig config)
     {
         switch (config.type)
         {
             case UpgradeType.Speed:
-                return new CarSpeedUpgrade(config.value);
+                return new SpeedUpgradeHandler(config.value);
             default:
-                return CarStubUpgrade.Default;
+                return StubUpgradeHandler.Default;
         }
     }
-
-    protected override void OnDispose()
-    {
-        _upgradeItemsMapById.Clear();
-        _upgradeItemsMapById = null;
-    }
+    public IReadOnlyDictionary<int, IUpgradeHandler> Collection => _upgradeItemsMapById;
 }

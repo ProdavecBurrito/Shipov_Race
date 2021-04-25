@@ -5,18 +5,12 @@ public class ItemsRepository : BaseController, IItemsRepository
     public IReadOnlyDictionary<int, IItem> Items => _itemsMapById;
     private Dictionary<int, IItem> _itemsMapById = new Dictionary<int, IItem>();
 
-    public ItemsRepository( List<ItemConfig> upgradeItemConfigs)
+    public ItemsRepository(List<ItemConfig> upgradeItemConfigs)
     {
         PopulateItems(ref _itemsMapById, upgradeItemConfigs);
     }
 
-    protected override void OnDispose()
-    {
-        _itemsMapById.Clear();
-        _itemsMapById = null;
-    }
-
-    private void PopulateItems( ref Dictionary<int, IItem> upgradeHandlersMapByType, List<ItemConfig> configs)
+    private void PopulateItems(ref Dictionary<int, IItem> upgradeHandlersMapByType, List<ItemConfig> configs)
     {
         foreach (var config in configs)
         {
@@ -33,8 +27,16 @@ public class ItemsRepository : BaseController, IItemsRepository
         return new Item
         {
             Id = config.id,
-            Info = new ItemInfo { Title = config.title }
+            Info = new ItemInfo { Title = config.title },
+            Sprite = config.image
         };
+    }
+
+    protected override void OnDispose()
+    {
+        base.Dispose();
+        _itemsMapById.Clear();
+        _itemsMapById = null;
     }
 }
 

@@ -6,6 +6,8 @@ public class TraleController : MonoBehaviour
     private Vector3 _touchPosition;
     private TrailRenderer _trailRenderer;
     private Camera _mainCamera;
+    private Vector3 lastToich;
+    private Vector3 currentTouch;
 
     private void Start()
     {
@@ -17,17 +19,21 @@ public class TraleController : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
-            DrawTrale();
-        }
-        else
-        {
-            _trailRenderer.Clear();
+            _touch = Input.touches[0];
+            if (_touch.phase == TouchPhase.Moved)
+            {
+                DrawTrale();
+            }
+            else
+            {
+                _trailRenderer.enabled = false;
+            }
         }
     }
 
     private void DrawTrale()
     {
-        _touch = Input.touches[0];
+        _trailRenderer.enabled = true;
         _touchPosition = _mainCamera.ScreenToWorldPoint(_touch.position);
         _touchPosition.z = transform.position.z;
         transform.position = _touchPosition;

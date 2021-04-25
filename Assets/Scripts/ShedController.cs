@@ -1,56 +1,41 @@
 ﻿using JetBrains.Annotations;
-using Profile;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 
 public class ShedController : BaseController
 {
-    private readonly Car _car;
+    private readonly IUpgradable _upgradable;
 
-    private readonly UpgradeHandlersRepository _upgradeHandlersRepository;
-    private readonly ItemsRepository _upgradeItemsRepository;
-    private readonly InventoryModel _inventoryModel;
-    private readonly InventoryController _inventoryController;
-    private readonly IInventoryView _inventoryView;
+    private readonly IRepository<int, IUpgradeHandler> _upgradeHandlersRepository;
+    private readonly IInventoryController _inventoryController;
 
-    public ShedController( [NotNull] List<ItemUpgradeConfig> upgradeItemConfigs, [NotNull] Car car)
+
+    public ShedController([NotNull] IRepository<int, IUpgradeHandler> upgradeHandlersRepository, [NotNull] IInventoryController inventoryController, [NotNull] IUpgradable upgradable)
     {
-        if (upgradeItemConfigs == null)
-        {
-            throw new ArgumentNullException(nameof(upgradeItemConfigs));
-        }
+        _upgradeHandlersRepository = upgradeHandlersRepository ?? throw new ArgumentNullException(nameof(upgradeHandlersRepository));
 
-        _car = car ?? throw new ArgumentNullException(nameof(car));
-        _upgradeHandlersRepository = new UpgradeHandlersRepository(upgradeItemConfigs);
-        _upgradeItemsRepository = new ItemsRepository(upgradeItemConfigs.Select(value => value.itemConfig).ToList());
-        _inventoryModel = new InventoryModel();
-        _inventoryController = new InventoryController(_inventoryModel, _upgradeItemsRepository, _inventoryView);
+        _inventoryController = inventoryController ?? throw new ArgumentNullException(nameof(inventoryController)); ;
 
-        AddController(_inventoryController);
-        AddController(_upgradeItemsRepository);
-        AddController(_upgradeHandlersRepository);
+        _upgradable = upgradable ?? throw new ArgumentNullException(nameof(upgradable));
     }
     public void Enter()
     {
         _inventoryController.ShowInventory(Exit);
-        Debug.Log($"Enter: car has speed : {_car.Speed}");
     }
 
     public void Exit()
     {
-        UpgradeCarWithEquippedItems( _car, _inventoryModel.GetEquippedItems(), _upgradeHandlersRepository.UpgradeItems);
-        Debug.Log($"Exit: car has speed : {_car.Speed}");
+        UpgradeCarWithEquippedItems( _upgradable, _inventoryController.GetEquippedItems(), _upgradeHandlersRepository.Collection);
+
     }
 
-    private void UpgradeCarWithEquippedItems(IUpgradableCar upgradableCar, IReadOnlyList<IItem> equippedItems, IReadOnlyDictionary<int, ICarUpgrade> upgradeHandlers)
+    private void UpgradeCarWithEquippedItems(IUpgradable upgradable, IReadOnlyList<IItem> equippedItems, IReadOnlyDictionary<int, IUpgradeHandler> upgradeHandlers)
     {
         foreach (var equippedItem in equippedItems)
         {
             if (upgradeHandlers.TryGetValue(equippedItem.Id, out var handler))
             {
-                handler.Upgrade(upgradableCar);
+                handler.Upgrade(upgradable);
             }
         }
     }

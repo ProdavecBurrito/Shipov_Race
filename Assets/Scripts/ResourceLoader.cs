@@ -18,5 +18,16 @@ namespace Tools
         {
             return Resources.Load<T>(path.PathResource);
         }
+
+        public static T LoadAndInstantiateObject<T>(ResourcePath path, Transform parent, bool worldPositionStays) where T : Object
+        {
+            var prefab = LoadObject<T>(path);
+            return InstantiateObject(prefab, parent, worldPositionStays);
+        }
+
+        public static T InstantiateObject<T>(T prefab, Transform parent, bool worldPositionStays) where T : Object
+        {
+            return Object.Instantiate(prefab, parent, worldPositionStays);
+        }
     }
 }

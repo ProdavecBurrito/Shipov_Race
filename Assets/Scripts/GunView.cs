@@ -2,8 +2,10 @@
 
 public class GunView : MonoBehaviour
 {
-    [SerializeField] public Transform _fireStartPos;
-    public GameObject Gun;
+    public Transform _fireStartPos;
+    [SerializeField] private GameObject _fireObjects;
+    public GameObject Gun { get; private set; }
+    public GameObject FireObjects => _fireObjects;
 
     private void Start()
     {

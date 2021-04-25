@@ -206,6 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8893212519100778887}
   - component: {fileID: 8893212519100778884}
+  - component: {fileID: 5187812553981233152}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -279,3 +280,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5187812553981233152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8893212519100778886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 680bdc9440f877b45afefc46bfe4f5a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fireStartPos: {fileID: 1481174960174357149}
+  Gun: {fileID: 0}
