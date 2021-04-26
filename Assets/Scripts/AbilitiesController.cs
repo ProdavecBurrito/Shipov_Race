@@ -1,5 +1,6 @@
 ﻿using JetBrains.Annotations;
 using System;
+using UnityEngine;
 
 public class AbilitiesController : BaseController, IAbilitiesController
 {
@@ -39,6 +40,7 @@ public class AbilitiesController : BaseController, IAbilitiesController
 
     public void ShowAbilities()
     {
+        Debug.Log("!");
         _abilityCollectionView.Show();
         _abilityCollectionView.Display(_inventoryModel.GetEquippedItems());
     }

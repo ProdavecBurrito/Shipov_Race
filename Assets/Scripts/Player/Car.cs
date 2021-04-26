@@ -1,6 +1,6 @@
 ﻿namespace Profile
 {
-    public class Car : IUpgradableCar
+    public class Car : IUpgradable
     {
         private readonly float _defaultSpeed;
 

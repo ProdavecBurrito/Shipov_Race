@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b729b7aa2823a0d4b81bc873f18a39b8, type: 3}
-  m_Name: Upgrade item
+  m_Script: {fileID: 11500000, guid: 7ed29d01e240634429257a43826ec2f6, type: 3}
+  m_Name: ShieldIAbiilityConfig
   m_EditorClassIdentifier: 
-  itemConfig: {fileID: 11400000, guid: b9976fba33ed1eb40b717df754a3fdfb, type: 2}
-  type: 1
+  itemConfig: {fileID: 11400000, guid: aa02f2823c951f242a5d4e24fd2958bc, type: 2}
+  view: {fileID: 0}
+  type: 0
   value: 5

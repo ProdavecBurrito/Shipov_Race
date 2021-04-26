@@ -7,16 +7,16 @@ namespace Ui
     internal class MainMenuView : MonoBehaviour
     {
         [SerializeField] private Button _buttonStart;
-        [SerializeField] private Button _openInventory;
         [SerializeField] private GameObject _startBackground;
         [SerializeField] private TrailRenderer _trailRenderer;
+        public Button _openInventory;
 
         public void Init(UnityAction startGame)
         {
             _buttonStart.onClick.AddListener(startGame);
         }
 
-        public void Open(UnityAction open)
+        public void OpenInventory(UnityAction open)
         {
             _openInventory.onClick.AddListener(open);
         }

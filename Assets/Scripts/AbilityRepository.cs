@@ -13,7 +13,10 @@ public class AbilityRepository : IRepository<int, IAbility>
     {
         foreach (var config in configs)
         {
-            if (upgradeHandlersMapByType.ContainsKey(config.Id)) continue;
+            if (upgradeHandlersMapByType.ContainsKey(config.Id))
+            {
+                continue;
+            }
             upgradeHandlersMapByType.Add(config.Id, CreateAbilityByType(config));
         }
     }

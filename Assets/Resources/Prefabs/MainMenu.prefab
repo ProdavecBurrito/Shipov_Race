@@ -213,9 +213,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _buttonStart: {fileID: 7033278114733384241}
-  _inventoryButton: {fileID: 1009806389403632260}
   _startBackground: {fileID: 5271765481528560519}
   _trailRenderer: {fileID: 8159489267265331500}
+  _openInventory: {fileID: 1009806389403632260}
 --- !u!1 &1304599060420012058
 GameObject:
   m_ObjectHideFlags: 0

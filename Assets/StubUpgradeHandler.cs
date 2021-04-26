@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assets
+﻿public class StubUpgradeHandler : IUpgradeHandler
 {
-    class StubUpgradeHandler
+    public static readonly IUpgradeHandler Default = new StubUpgradeHandler();
+
+    public IUpgradable Upgrade(IUpgradable upgradable)
     {
+        return upgradable;
     }
 }

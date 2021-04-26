@@ -3,7 +3,6 @@ using Game.Background;
 using Profile;
 using Tools;
 using UnityEngine;
-using System.Collections.Generic;
 
 namespace Game
 {
@@ -11,16 +10,31 @@ namespace Game
     {
         public GameController(Transform placeForUi, PlayerProfile profilePlayer)
         {
-
-            SubscriptionProperty<float> leftMoveDiff = new SubscriptionProperty<float>();
-            SubscriptionProperty<float> rightMoveDiff = new SubscriptionProperty<float>();
-            BackgroundController tapeBackgroundController = new BackgroundController(leftMoveDiff, rightMoveDiff);
-            InputController inputGameController = new InputController(leftMoveDiff, rightMoveDiff, profilePlayer.CurrentCar);
-            CarController carController = new CarController();
-            
-            AddController(inputGameController);
+            var leftMoveDiff = new SubscriptionProperty<float>();
+            var rightMoveDiff = new SubscriptionProperty<float>();
+            var tapeBackgroundController = new BackgroundController(leftMoveDiff, rightMoveDiff);
             AddController(tapeBackgroundController);
+            var inputGameController = new InputController(leftMoveDiff, rightMoveDiff, profilePlayer.CurrentCar);
+            AddController(inputGameController);
+            var carController = new CarController();
             AddController(carController);
+
+            var abilityController = ConfigureAbilityController(placeForUi, carController);
+        }
+
+        private IAbilitiesController ConfigureAbilityController(Transform placeForUi, IAbilityActivator abilityActivator)
+        {
+            var abilityItemsConfigCollection = ContentDataLoader.LoadAbilityItemConfigs(new ResourcePath { PathResource = "DataSource/Ability/AbilityItemConfigDataSource" });
+            var abilityRepository = new AbilityRepository(abilityItemsConfigCollection);
+            var abilityCollectionViewPath = new ResourcePath { PathResource = $"Prefabs/{nameof(AbilityCollectionView)}" };
+            var abilityCollectionView = ResourceLoader.LoadAndInstantiateObject<AbilityCollectionView>(abilityCollectionViewPath, placeForUi, false);
+            AddGameObjects(abilityCollectionView.gameObject);
+
+            var inventoryModel = new InventoryModel();
+            var abilitiesController = new AbilitiesController(abilityRepository, inventoryModel, abilityCollectionView, abilityActivator);
+            AddController(abilitiesController);
+
+            return abilitiesController;
         }
     }
 }

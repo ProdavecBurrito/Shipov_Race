@@ -18,6 +18,7 @@ public class GunAbility : IAbility
         _gun = _gunView.Gun;
         _gunPosition = _gunView.Gun.transform;
         _fireStartPos = _gunView._fireStartPos;
+        _viewPrefab = _gunView.FireObjects.GetComponent<Rigidbody2D>();
     }
 
     public void Apply(IAbilityActivator activator)

@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3578ca1ae8af374d9d15e964231cd7d, type: 3}
-  m_Name: Shield
+  m_Script: {fileID: 11500000, guid: b729b7aa2823a0d4b81bc873f18a39b8, type: 3}
+  m_Name: SpeedUpgrade
   m_EditorClassIdentifier: 
-  id: 4
-  title: Shield
-  image: {fileID: 21300000, guid: 5347096710370e54cbb661ce293bd1f5, type: 3}
+  itemConfig: {fileID: 11400000, guid: b9976fba33ed1eb40b717df754a3fdfb, type: 2}
+  type: 1
+  value: 5

@@ -25,8 +25,8 @@ public class ShedController : BaseController
 
     public void Exit()
     {
-        UpgradeCarWithEquippedItems( _upgradable, _inventoryController.GetEquippedItems(), _upgradeHandlersRepository.Collection);
-
+        _inventoryController.HideInventory();
+        UpgradeCarWithEquippedItems(_upgradable, _inventoryController.GetEquippedItems(), _upgradeHandlersRepository.Collection);
     }
 
     private void UpgradeCarWithEquippedItems(IUpgradable upgradable, IReadOnlyList<IItem> equippedItems, IReadOnlyDictionary<int, IUpgradeHandler> upgradeHandlers)

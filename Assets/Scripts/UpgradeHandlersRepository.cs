@@ -3,6 +3,7 @@
 public class UpgradeHandlersRepository : IRepository<int, IUpgradeHandler>
 {
     private readonly Dictionary<int, IUpgradeHandler> _upgradeItemsMapById = new Dictionary<int, IUpgradeHandler>();
+    public IReadOnlyDictionary<int, IUpgradeHandler> Collection => _upgradeItemsMapById;
 
     public UpgradeHandlersRepository(List<ItemUpgradeConfig> upgradeItemConfigs)
     {
@@ -28,5 +29,4 @@ public class UpgradeHandlersRepository : IRepository<int, IUpgradeHandler>
                 return StubUpgradeHandler.Default;
         }
     }
-    public IReadOnlyDictionary<int, IUpgradeHandler> Collection => _upgradeItemsMapById;
 }

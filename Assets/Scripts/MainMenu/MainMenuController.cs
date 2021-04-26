@@ -17,15 +17,16 @@ namespace Ui
         public MainMenuController(Transform placeForUi, Transform placeForInventory, PlayerProfile playerProfile)
         {
             _playerProfile = playerProfile;
-            _view = LoadView(placeForUi);
+            _view = ResourceLoader.LoadAndInstantiateObject<MainMenuView>(new ResourcePath { PathResource = "Prefabs/mainMenu" }, placeForUi, false);
+            AddGameObjects(_view.gameObject);
             _view.Init(StartGame);
 
-            var shredController = ConfigureShedController(placeForInventory, _playerProfile);
+            var shedController = ConfigureShedController(placeForInventory, _playerProfile);
         }
 
-        private BaseController ConfigureShedController( Transform placeForUi, PlayerProfile profilePlayer)
+        private ShedController ConfigureShedController( Transform placeForUi, PlayerProfile profilePlayer)
         {
-            var upgradeItemsConfigCollection = ContentDataLoader.LoadUpgradeItemConfigs(new ResourcePath { PathResource = "Data/UpgradeItemConfigDataSource" });
+            var upgradeItemsConfigCollection = ContentDataLoader.LoadUpgradeItemConfigs(new ResourcePath { PathResource = "Data/Upgrade/UpgradeItemConfigDataSource" });
             var upgradeItemsRepository = new UpgradeHandlersRepository(upgradeItemsConfigCollection);
 
             var itemsRepository = new ItemsRepository(upgradeItemsConfigCollection.Select(value => value.itemConfig).ToList());
@@ -38,15 +39,10 @@ namespace Ui
 
             AddController(inventoryController);
             AddController(shedController);
+            _view.OpenInventory(shedController.Enter);
+            //inventoryView.CloseInventory(shedController.Exit);
 
             return shedController;
-        }
-
-        private MainMenuView LoadView(Transform placeForUi)
-        {
-            GameObject mainMenu = Object.Instantiate(ResourceLoader.LoadPrefab(_mainMenuPath), placeForUi, false);
-            AddGameObjects(mainMenu);
-            return mainMenu.GetComponent<MainMenuView>();
         }
 
         private void StartGame()
