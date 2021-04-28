@@ -18,8 +18,10 @@ namespace Ui
         {
             _playerProfile = playerProfile;
             _view = ResourceLoader.LoadAndInstantiateObject<MainMenuView>(new ResourcePath { PathResource = "Prefabs/mainMenu" }, placeForUi, false);
+
             AddGameObjects(_view.gameObject);
-            _view.Init(StartGame);
+            _view.InitGameStart(StartGame);
+            _view.InitFight(StartFight);
 
             var shedController = ConfigureShedController(placeForInventory, _playerProfile);
         }
@@ -49,6 +51,12 @@ namespace Ui
         {
             _playerProfile.CurrentState.Value = GameState.Game;
             _playerProfile.AnalyticTools.SendMessage("StartGame");
+        }
+
+        private void StartFight()
+        {
+            _playerProfile.CurrentState.Value = GameState.Fight;
+            _playerProfile.AnalyticTools.SendMessage("StartFight");
         }
     }
 }
