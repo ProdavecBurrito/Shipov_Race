@@ -6,14 +6,20 @@ namespace Ui
 {
     internal class MainMenuView : MonoBehaviour
     {
-        [SerializeField] private Button _buttonStart;
+        [SerializeField] private Button _startButton;
+        [SerializeField] private Button _fightButton;
         [SerializeField] private GameObject _startBackground;
         [SerializeField] private TrailRenderer _trailRenderer;
         public Button _openInventory;
 
-        public void Init(UnityAction startGame)
+        public void InitGameStart(UnityAction startGame)
         {
-            _buttonStart.onClick.AddListener(startGame);
+            _startButton.onClick.AddListener(startGame);
+        }
+
+        public void InitFight(UnityAction startFight)
+        {
+            _fightButton.onClick.AddListener(startFight);
         }
 
         public void OpenInventory(UnityAction open)
@@ -23,7 +29,7 @@ namespace Ui
 
         protected void OnDestroy()
         {
-            _buttonStart.onClick.RemoveAllListeners();
+            _startButton.onClick.RemoveAllListeners();
         }
     }
 }

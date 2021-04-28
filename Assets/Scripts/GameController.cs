@@ -20,6 +20,7 @@ namespace Game
             AddController(carController);
 
             var abilityController = ConfigureAbilityController(placeForUi, carController);
+            abilityController.ShowAbilities();
         }
 
         private IAbilitiesController ConfigureAbilityController(Transform placeForUi, IAbilityActivator abilityActivator)
