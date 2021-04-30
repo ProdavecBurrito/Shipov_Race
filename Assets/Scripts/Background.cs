@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game.TapeBackground
+namespace Game.Background
 {
     internal class Background : MonoBehaviour
     {

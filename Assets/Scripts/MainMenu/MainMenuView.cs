@@ -6,8 +6,8 @@ namespace Ui
 {
     internal class MainMenuView : MonoBehaviour
     {
-        [SerializeField]
-        private Button _buttonStart;
+        [SerializeField] private Button _buttonStart;
+        [SerializeField] private GameObject _startBackground;
 
         public void Init(UnityAction startGame)
         {
