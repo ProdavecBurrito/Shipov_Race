@@ -25,7 +25,7 @@ namespace Game
 
         private IAbilitiesController ConfigureAbilityController(Transform placeForUi, IAbilityActivator abilityActivator, Car car)
         {
-            var abilityItemsConfigCollection = ContentDataLoader.LoadAbilityItemConfigs(new ResourcePath { PathResource = "DataSource/Ability/AbilityItemConfigDataSource" });
+            var abilityItemsConfigCollection = ContentDataLoader.LoadAbilityItemConfigs(new ResourcePath { PathResource = "Data/Abilityes/AbilityItemConfigDataSource" });
             var abilityRepository = new AbilityRepository(abilityItemsConfigCollection, car);
             var abilityCollectionViewPath = new ResourcePath { PathResource = $"Prefabs/{nameof(AbilityCollectionView)}" };
             var abilityCollectionView = ResourceLoader.LoadAndInstantiateObject<AbilityCollectionView>(abilityCollectionViewPath, placeForUi, false);

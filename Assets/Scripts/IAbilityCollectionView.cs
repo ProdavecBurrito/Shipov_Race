@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public interface IAbilityCollectionView
 {
-    event EventHandler<IItem> UseRequested;
+    List<AbilityHolder> AbilityItems { get; set; }
     void Display(IReadOnlyList<IItem> abilityItems);
-    void Show();
 }

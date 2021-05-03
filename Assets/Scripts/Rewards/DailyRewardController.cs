@@ -36,10 +36,10 @@ public class DailyRewardController
 
     private void RefreshRewardsState()
     {
-        _isGetReward = true;
         if (_dailyRewardView.TimeGetReward.HasValue)
         {
             var timeSpan = DateTime.UtcNow - _dailyRewardView.TimeGetReward.Value;
+
             if (timeSpan.Seconds > _dailyRewardView.TimeDeadline)
             {
                 _dailyRewardView.TimeGetReward = null;
@@ -49,6 +49,10 @@ public class DailyRewardController
             {
                 _isGetReward = false;
             }
+        }
+        else
+        {
+            _isGetReward = true;
         }
         RefreshUi();
     }
@@ -68,6 +72,9 @@ public class DailyRewardController
                 var nextClaimTime = _dailyRewardView.TimeGetReward.Value.AddSeconds(_dailyRewardView.TimeCooldown);
                 var currentClaimCooldown = nextClaimTime - DateTime.UtcNow;
                 _dailyRewardView.RewardSlider.value = (float)currentClaimCooldown.TotalSeconds;
+                var timeGetReward = $"{currentClaimCooldown.Days:D2}:{currentClaimCooldown.Hours:D2}:{currentClaimCooldown.Minutes:D2}:{currentClaimCooldown.Seconds}";
+
+                _dailyRewardView.TimerNewReward.text = $"Time to get the next reward: {timeGetReward}";
             }
 
             for (var i = 0; i < _slots.Count; i++)

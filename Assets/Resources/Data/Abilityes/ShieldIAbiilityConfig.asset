@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemConfig: {fileID: 11400000, guid: aa02f2823c951f242a5d4e24fd2958bc, type: 2}
   view: {fileID: 0}
-  type: 0
+  type: 2
   value: 5

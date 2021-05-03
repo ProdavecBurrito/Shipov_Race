@@ -1,5 +1,7 @@
 ﻿using JetBrains.Annotations;
 using System;
+using Tools;
+using UnityEngine;
 
 public class AbilitiesController : BaseController, IAbilitiesController
 {
@@ -17,16 +19,50 @@ public class AbilitiesController : BaseController, IAbilitiesController
         _abilityCollectionView = abilityCollectionView ?? throw new ArgumentNullException(nameof(abilityCollectionView));
         _carController = abilityActivator ?? throw new ArgumentNullException(nameof(abilityActivator));
         SetupView(_abilityCollectionView);
+        FillInventory(_inventoryModel, _abilityRepository);
+    }
+
+    private void FillInventory(IInventoryModel inventoryModel, IRepository<int, IAbility> itemsRepository)
+    {
+        //for (int i = 0; i < itemsRepository.Collection.Count; i++)
+        //{
+        //    inventoryModel.EquipAbility(itemsRepository.Collection.Values);
+        //    if (itemsRepository is AbilityRepository abilityRepository)
+        //    {
+        //        Debug.Log("B");
+        //        inventoryModel.AddAbilityItem(abilityRepository.items[i]);
+        //    }
+        //}
+
+        foreach (var item in itemsRepository.Collection.Values)
+        {
+            inventoryModel.EquipAbility(item);
+            Debug.Log(item);
+        }
+
+        for (int i = 0; i < itemsRepository.Collection.Count; i++)
+        {
+            if (itemsRepository is AbilityRepository abilityRepository)
+            {
+                inventoryModel.AddAbilityItem(abilityRepository.items[i]);
+            }
+        }
     }
 
     private void SetupView(IAbilityCollectionView view)
     {
-        view.UseRequested += OnAbilityUseRequested;
+        for (int i = 0; i < view.AbilityItems.Count; i++)
+        {
+            view.AbilityItems[i].UseRequested += OnAbilityUseRequested;
+        }
     }
 
     private void CleanupView(IAbilityCollectionView view)
     {
-        view.UseRequested -= OnAbilityUseRequested;
+        for (int i = 0; i < view.AbilityItems.Count; i++)
+        {
+            view.AbilityItems[i].UseRequested -= OnAbilityUseRequested;
+        }
     }
 
     private void OnAbilityUseRequested(object sender, IItem e)
@@ -39,8 +75,12 @@ public class AbilitiesController : BaseController, IAbilitiesController
 
     public void ShowAbilities()
     {
-        _abilityCollectionView.Show();
-        _abilityCollectionView.Display(_inventoryModel.GetEquippedItems());
+        _abilityCollectionView.Display(_inventoryModel.GetEquippedAbilities());
+    }
+
+    public void EquipAbility()
+    {
+
     }
 }
 

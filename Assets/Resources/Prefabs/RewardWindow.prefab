@@ -1161,7 +1161,7 @@ RectTransform:
   m_GameObject: {fileID: 8308222427846809764}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.10397, y: 1.10397, z: 1.10397}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 8308222427773229142}
   - {fileID: 8308222426269760377}
@@ -1277,7 +1277,7 @@ MonoBehaviour:
   - RewardType: 1
     Icon: {fileID: 21300000, guid: 32fb7e0aee1614fe8ac38467a139e9a6, type: 3}
     RewardValue: 400
-  _rewardSlider: {fileID: 0}
+  _rewardSlider: {fileID: 1509152828362740792}
   _timerNewReward: {fileID: 8308222427717583161}
   _mountRootSlotsReward: {fileID: 8308222426269760377}
   _containerSlotRewardView: {fileID: 10028196666243767, guid: 6ea389ee3d5e2434bb1a4e705fac1fe5, type: 3}

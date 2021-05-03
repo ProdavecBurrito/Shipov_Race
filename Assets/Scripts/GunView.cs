@@ -9,6 +9,7 @@ public class GunView : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("1");
         Gun = GetComponent<GameObject>();
     }
 

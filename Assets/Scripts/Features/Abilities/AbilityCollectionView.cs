@@ -6,37 +6,31 @@ using UnityEngine.UI;
 
 public class AbilityCollectionView : MonoBehaviour, IAbilityCollectionView
 {
-    public event EventHandler<IItem> UseRequested;
 
-    private IReadOnlyList<IItem> _abilityItems;
-    private List<Button> _buttons;
-    private List<Image> _images;
+    [SerializeField] private List<AbilityHolder> _abilityItems;
 
-    private void Awake()
-    {
-        _images = GetComponentsInChildren<Image>().ToList();
-        Debug.Log(_images.Count);
-    }
+    private IReadOnlyList<IItem> _itemInfoCollection;
 
-    protected virtual void OnUseRequested(IItem e)
-    {
-        UseRequested?.Invoke(this, e);
-    }
+    public List<AbilityHolder> AbilityItems { get => _abilityItems; set => _abilityItems = value; }
 
     public void Display(IReadOnlyList<IItem> abilityItems)
     {
-        Debug.Log("Display");
-        Debug.Log(abilityItems.Count);
-        _abilityItems = abilityItems;
+        _itemInfoCollection = abilityItems;
+        for (int i = 0; i < _itemInfoCollection.Count; i++)
+        {
+            _abilityItems[i].Button.image.sprite = _itemInfoCollection[i].Sprite;
+            _abilityItems[i].AbilityItem = _itemInfoCollection[i];
+        }
+
         for (int i = 0; i < _abilityItems.Count; i++)
         {
-            _images[i].sprite = _abilityItems[i].Sprite;
-            Debug.Log(i);
+            Show(_abilityItems[i]);
         }
     }
 
-    public void Show()
+    public void Show(AbilityHolder abilityHolder)
     {
+        abilityHolder.Init();
     }
 
     public void Hide()
