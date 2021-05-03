@@ -7,7 +7,11 @@ internal sealed class GameStarter : MonoBehaviour
 {
     [SerializeField] private Transform _placeForUi;
     [SerializeField] private Transform _placeForInventory;
+    [SerializeField] private Transform _placeForReward;
     [SerializeField] private float _speedCar;
+    [SerializeField] private int _ammo;
+
+    private MainRewardWindowController _mainRewardWindowController;
     private Camera _mainCamera;
 
     private MainController _mainController;
@@ -15,9 +19,9 @@ internal sealed class GameStarter : MonoBehaviour
     private void Awake()
     {
         _mainCamera = FindObjectOfType<Camera>();
-        PlayerProfile profilePlayer = new PlayerProfile(_speedCar, new UnityAnalyticTools());
+        PlayerProfile profilePlayer = new PlayerProfile(_speedCar, _ammo, new UnityAnalyticTools());
         profilePlayer.CurrentState.Value = GameState.Start;
-        _mainController = new MainController(_placeForUi, _placeForInventory, profilePlayer, _mainCamera);
+        _mainController = new MainController(_placeForUi, _placeForInventory, _placeForReward, profilePlayer, _mainCamera);
     }
 
     private void OnDestroy()

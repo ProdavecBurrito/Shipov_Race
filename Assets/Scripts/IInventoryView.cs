@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine.UI;
+﻿using System.Collections.Generic;
 
 public interface IInventoryView
 {
-    event EventHandler<IItem> Selected;
-    event EventHandler<IItem> Deselected;
+    List<InventoryItem> InventoryItems { get; set; }
+
     void Display(List<IItem> items);
     void Show();
     void Hide();
