@@ -9,19 +9,22 @@ internal sealed class MainController : BaseController
     private MainMenuController _mainMenuController;
     private GameController _gameController;
     private FightMenuController _fightController;
+    private MainRewardWindowController _mainRewardWindowController;
     private readonly Transform _placeForUi;
     private readonly Transform _placeForInventory;
     private readonly PlayerProfile _playerProfile;
     private Camera _mainCamera;
 
-    public MainController(Transform placeForUi, Transform placeForInventory, PlayerProfile profilePlayer, Camera mainCamera)
+    public MainController(Transform placeForUi, Transform placeForInventory, Transform placeForReward, PlayerProfile profilePlayer, Camera mainCamera)
     {
         _mainCamera = mainCamera;
         _playerProfile = profilePlayer;
         _placeForUi = placeForUi;
         _placeForInventory = placeForInventory;
+
         OnChangeGameState(_playerProfile.CurrentState.Value);
         profilePlayer.CurrentState.SubscribeOnChange(OnChangeGameState);
+        _mainRewardWindowController = new MainRewardWindowController(placeForReward);
     }
 
     private void OnChangeGameState(GameState state)

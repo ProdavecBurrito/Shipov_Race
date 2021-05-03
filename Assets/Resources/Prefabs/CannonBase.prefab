@@ -293,4 +293,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fireStartPos: {fileID: 1481174960174357149}
-  Gun: {fileID: 0}
+  _fireObjects: {fileID: 4533089080709852246, guid: cf5c93e049d9a8049aa1fbdc12059dda, type: 3}

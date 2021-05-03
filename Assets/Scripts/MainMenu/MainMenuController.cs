@@ -7,21 +7,18 @@ namespace Ui
 {
     internal class MainMenuController : BaseController
     {
-        private readonly ResourcePath _mainMenuPath = new ResourcePath { PathResource = "Prefabs/MainMenu" };
-        private readonly ResourcePath _invenventoryPath = new ResourcePath { PathResource = "Prefabs/InventoryView" };
         private readonly PlayerProfile _playerProfile;
         private readonly InventoryController _inventoryController;
         private MainMenuView _view;
-        private InventoryView _inventoryView;
 
         public MainMenuController(Transform placeForUi, Transform placeForInventory, PlayerProfile playerProfile)
         {
             _playerProfile = playerProfile;
-            _view = ResourceLoader.LoadAndInstantiateObject<MainMenuView>(new ResourcePath { PathResource = "Prefabs/mainMenu" }, placeForUi, false);
+            _view = ResourceLoader.LoadAndInstantiateObject<MainMenuView>(new ResourcePath { PathResource = "Prefabs/MainMenu" }, placeForUi, false);
+            _view.InitGameStart(StartGame);
+            _view.InitFightWindow(StartFight);
 
             AddGameObjects(_view.gameObject);
-            _view.InitGameStart(StartGame);
-            _view.InitFight(StartFight);
 
             var shedController = ConfigureShedController(placeForInventory, _playerProfile);
         }
@@ -42,7 +39,7 @@ namespace Ui
             AddController(inventoryController);
             AddController(shedController);
             _view.OpenInventory(shedController.Enter);
-            //inventoryView.CloseInventory(shedController.Exit);
+            inventoryView.CloseInventory(shedController.Exit);
 
             return shedController;
         }

@@ -8,6 +8,7 @@ namespace Ui
     {
         [SerializeField] private Button _startButton;
         [SerializeField] private Button _fightButton;
+        [SerializeField] private Button _rewardButton;
         [SerializeField] private GameObject _startBackground;
         [SerializeField] private TrailRenderer _trailRenderer;
         public Button _openInventory;
@@ -17,9 +18,14 @@ namespace Ui
             _startButton.onClick.AddListener(startGame);
         }
 
-        public void InitFight(UnityAction startFight)
+        public void InitFightWindow(UnityAction startFight)
         {
             _fightButton.onClick.AddListener(startFight);
+        }
+
+        public void InitRewardWindow(UnityAction showReward)
+        {
+            _rewardButton.onClick.AddListener(showReward);
         }
 
         public void OpenInventory(UnityAction open)
