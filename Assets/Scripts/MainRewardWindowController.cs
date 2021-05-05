@@ -7,6 +7,6 @@ public class MainRewardWindowController : BaseController
 
     public MainRewardWindowController(Transform placeForUI)
     {
-        _view = ResourceLoader.LoadAndInstantiateObject<MainRewardWindowView>(new ResourcePath { PathResource = "Prefabs/MainRewardWindow" }, placeForUI, false);
+        _view = ResourceLoader.LoadAndInstantiateObject<MainRewardWindowView>(new ResourcePath { PathResource = "Prefabs/BaseRewardWindowObject" }, placeForUI, false);
     }
 }

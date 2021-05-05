@@ -4,14 +4,9 @@ public class GunView : MonoBehaviour
 {
     public Transform _fireStartPos;
     [SerializeField] private GameObject _fireObjects;
-    public GameObject Gun { get; private set; }
+    [SerializeField] private GameObject _gun;
+    public GameObject Gun => _gun;
     public GameObject FireObjects => _fireObjects;
-
-    private void Start()
-    {
-        Debug.Log("1");
-        Gun = GetComponent<GameObject>();
-    }
 
     public void Hide()
     {

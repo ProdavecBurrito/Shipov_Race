@@ -8,9 +8,11 @@ public class AbilityRepository : IRepository<int, IAbility>
     public IReadOnlyDictionary<int, IAbility> Collection => _abilityMapById;
     public List<IItem> items = new List<IItem>();
     private readonly Car _car;
+    private readonly Transform _gunPosition;
 
-    public AbilityRepository(List<AbilityItemConfig> itemConfigs, Car car)
+    public AbilityRepository(List<AbilityItemConfig> itemConfigs, Car car, Transform gunPosition)
     {
+        _gunPosition = gunPosition;
         _car = car;
         PopulateItems(ref _abilityMapById, itemConfigs);
     }
@@ -24,16 +26,16 @@ public class AbilityRepository : IRepository<int, IAbility>
                 continue;
             }
             items.Add(CreateItem(config.itemConfig));
-            upgradeHandlersMapByType.Add(config.Id, CreateAbilityByType(config, _car));
+            upgradeHandlersMapByType.Add(config.Id, CreateAbilityByType(config, _car, _gunPosition));
         }
     }
 
-    private IAbility CreateAbilityByType(AbilityItemConfig config, Car car)
+    private IAbility CreateAbilityByType(AbilityItemConfig config, Car car, Transform gunPosition)
     {
         switch (config.type)
         {
             case AbilityType.Gun:
-                return new GunAbility(config, car);
+                return new GunAbility(config, car, gunPosition);
             case AbilityType.Shield:
                 return new ShieldAbility(config);
             default:

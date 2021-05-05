@@ -19,14 +19,14 @@ namespace Game
             var carController = new CarController();
             AddController(carController);
 
-            var abilityController = ConfigureAbilityController(placeForUi, carController, profilePlayer.CurrentCar);
+            var abilityController = ConfigureAbilityController(placeForUi, carController, profilePlayer.CurrentCar, carController.GetGunPosition());
             abilityController.ShowAbilities();
         }
 
-        private IAbilitiesController ConfigureAbilityController(Transform placeForUi, IAbilityActivator abilityActivator, Car car)
+        private IAbilitiesController ConfigureAbilityController(Transform placeForUi, IAbilityActivator abilityActivator, Car car, Transform gunPosition)
         {
             var abilityItemsConfigCollection = ContentDataLoader.LoadAbilityItemConfigs(new ResourcePath { PathResource = "Data/Abilityes/AbilityItemConfigDataSource" });
-            var abilityRepository = new AbilityRepository(abilityItemsConfigCollection, car);
+            var abilityRepository = new AbilityRepository(abilityItemsConfigCollection, car, gunPosition);
             var abilityCollectionViewPath = new ResourcePath { PathResource = $"Prefabs/{nameof(AbilityCollectionView)}" };
             var abilityCollectionView = ResourceLoader.LoadAndInstantiateObject<AbilityCollectionView>(abilityCollectionViewPath, placeForUi, false);
             AddGameObjects(abilityCollectionView.gameObject);

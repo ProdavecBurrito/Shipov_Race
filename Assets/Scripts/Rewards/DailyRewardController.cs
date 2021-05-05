@@ -36,6 +36,7 @@ public class DailyRewardController
 
     private void RefreshRewardsState()
     {
+        _isGetReward = true;
         if (_dailyRewardView.TimeGetReward.HasValue)
         {
             var timeSpan = DateTime.UtcNow - _dailyRewardView.TimeGetReward.Value;
@@ -49,10 +50,6 @@ public class DailyRewardController
             {
                 _isGetReward = false;
             }
-        }
-        else
-        {
-            _isGetReward = true;
         }
         RefreshUi();
     }

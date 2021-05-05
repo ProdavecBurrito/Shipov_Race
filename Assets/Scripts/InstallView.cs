@@ -8,7 +8,7 @@ public class InstallView : MonoBehaviour
 
     private void Awake()
     {
-        _dailyRewardController = new DailyRewardController(_dailyRewardView);
+        _dailyRewardController = new    DailyRewardController(_dailyRewardView);
     }
 
     private void Start()
