@@ -1,18 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
-public class RewardWindowView : MonoBehaviour
+public class RewardWindowView : MonoBehaviour, ISidePanelTween
 {
-    private Animator _animator;
+    [SerializeField] private Vector2 _openPosition;
+    [SerializeField] private Vector2 _closePosition;
+    private float _duration = 0.6f;
     private bool _isOpen;
 
-    private void Awake()
-    {
-        _animator = GetComponent<Animator>();
-    }
-
-    public void ShowReward()
+    public void ShowWindow()
     {
         if (_isOpen)
         {
@@ -26,13 +22,26 @@ public class RewardWindowView : MonoBehaviour
 
     private void Show()
     {
-        _animator.Play("RewardOpen");
+        var sequence = DOTween.Sequence();
+
+        sequence.Insert(0.0f, transform.DOLocalMove(_openPosition, _duration));
+        sequence.OnComplete(() =>
+        {
+            sequence = null;
+        });
+
         _isOpen = true;
     }
 
     private void Hide()
     {
-        _animator.Play("RewardClose");
+        var sequence = DOTween.Sequence();
+
+        sequence.Insert(0.0f, transform.DOLocalMove(_closePosition, _duration));
+        sequence.OnComplete(() =>
+        {
+            sequence = null;
+        });
         _isOpen = false;
     }
 }

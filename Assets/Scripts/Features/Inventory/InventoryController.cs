@@ -44,13 +44,13 @@ public class InventoryController : BaseController, IInventoryController
 
     public void ShowInventory()
     {
-        _inventoryView.Show();
+        _inventoryView.ShowWindow();
         _inventoryView.Display(_itemsRepository.Collection.Values.ToList());
     }
 
     public void HideInventory()
     {
-        _inventoryView.Hide();
+        _inventoryView.ShowWindow();
         _hideAction?.Invoke();
     }
 

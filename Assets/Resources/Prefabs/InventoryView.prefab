@@ -1144,7 +1144,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6722135131847929646}
   - component: {fileID: 789975132979804115}
-  - component: {fileID: 3433114596097276419}
   m_Layer: 5
   m_Name: InventoryView
   m_TagString: Untagged
@@ -1195,25 +1194,8 @@ MonoBehaviour:
   - {fileID: 7808371514220548516}
   - {fileID: 73866427746985992}
   - {fileID: 1233086471954204196}
---- !u!95 &3433114596097276419
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6722135131847929647}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 68d7644e4f4656c4291465bd5175c9a0, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  _openPosition: {x: 280, y: 28}
+  _closePosition: {x: 1200, y: 28}
 --- !u!1 &7201004870467957675
 GameObject:
   m_ObjectHideFlags: 0

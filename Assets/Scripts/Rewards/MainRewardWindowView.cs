@@ -8,6 +8,6 @@ public class MainRewardWindowView : MonoBehaviour
 
     private void Awake()
     {
-        _showRewardWindowView.onClick.AddListener(_rewardWindow.ShowReward);
+        _showRewardWindowView.onClick.AddListener(_rewardWindow.ShowWindow);
     }
 }
