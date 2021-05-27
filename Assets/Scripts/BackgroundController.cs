@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Game.Background
 {
     internal sealed class BackgroundController : BaseController
-    {
+    {   
         private readonly ResourcePath _viewPath = new ResourcePath { PathResource = "Prefabs/Background" };
         private readonly BackgroundView _view;
         private readonly SubscriptionProperty<float> _diff;
