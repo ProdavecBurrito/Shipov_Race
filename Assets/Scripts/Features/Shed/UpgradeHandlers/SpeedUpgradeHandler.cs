@@ -1,4 +1,6 @@
-﻿internal class SpeedUpgradeHandler : IUpgradeHandler
+﻿using UnityEngine;
+
+internal class SpeedUpgradeHandler : IUpgradeHandler
 {
     private float _speed;
 
@@ -9,7 +11,9 @@
 
     public IUpgradable Upgrade(IUpgradable upgradable)
     {
+        Debug.Log($"Speed: { upgradable.Speed}");
         upgradable.Speed = _speed;
+        Debug.Log($"Speed: { upgradable.Speed}");
         return upgradable;
     }
 }

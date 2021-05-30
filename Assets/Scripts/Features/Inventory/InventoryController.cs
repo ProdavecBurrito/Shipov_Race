@@ -8,7 +8,7 @@ public class InventoryController : BaseController, IInventoryController
     private readonly IInventoryModel _inventoryModel;
     private readonly IRepository<int, IItem> _itemsRepository;
     private readonly IInventoryView _inventoryView;
-    private Action _hideAction;
+    //private Action _hideAction;
 
     public InventoryController([NotNull] IRepository<int, IItem> itemsRepository, [NotNull] IInventoryModel inventoryModel, [NotNull] IInventoryView inventoryView)
     {
@@ -44,14 +44,14 @@ public class InventoryController : BaseController, IInventoryController
 
     public void ShowInventory()
     {
-        _inventoryView.Show();
+        _inventoryView.ShowWindow();
         _inventoryView.Display(_itemsRepository.Collection.Values.ToList());
     }
 
     public void HideInventory()
     {
-        _inventoryView.Hide();
-        _hideAction?.Invoke();
+        _inventoryView.ShowWindow();
+        //_hideAction?.Invoke();
     }
 
     private void OnItemSelected(object sender, IItem item)

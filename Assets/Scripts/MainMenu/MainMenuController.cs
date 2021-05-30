@@ -8,7 +8,6 @@ namespace Ui
     internal class MainMenuController : BaseController
     {
         private readonly PlayerProfile _playerProfile;
-        private readonly InventoryController _inventoryController;
         private MainMenuView _view;
 
         public MainMenuController(Transform placeForUi, Transform placeForInventory, PlayerProfile playerProfile)
@@ -17,13 +16,14 @@ namespace Ui
             _view = ResourceLoader.LoadAndInstantiateObject<MainMenuView>(new ResourcePath { PathResource = "Prefabs/MainMenu" }, placeForUi, false);
             _view.InitGameStart(StartGame);
             _view.InitFightWindow(StartFight);
+            _view.ExitApplication(CloseApplication);
 
             AddGameObjects(_view.gameObject);
 
             var shedController = ConfigureShedController(placeForInventory, _playerProfile);
         }
 
-        private ShedController ConfigureShedController( Transform placeForUi, PlayerProfile profilePlayer)
+        private ShedController ConfigureShedController(Transform placeForUi, PlayerProfile profilePlayer)
         {
             var upgradeItemsConfigCollection = ContentDataLoader.LoadUpgradeItemConfigs(new ResourcePath { PathResource = "Data/Upgrade/UpgradeItemConfigDataSource" });
             var upgradeItemsRepository = new UpgradeHandlersRepository(upgradeItemsConfigCollection);
@@ -38,8 +38,8 @@ namespace Ui
 
             AddController(inventoryController);
             AddController(shedController);
-            _view.OpenInventory(shedController.Enter);
-            inventoryView.CloseInventory(shedController.Exit);
+            _view.OpenInventory(shedController.ShowWindow);
+            inventoryView.CloseInventory(shedController.ShowWindow);
 
             return shedController;
         }
@@ -54,6 +54,11 @@ namespace Ui
         {
             _playerProfile.CurrentState.Value = GameState.Fight;
             _playerProfile.AnalyticTools.SendMessage("StartFight");
+        }
+
+        private void CloseApplication()
+        {
+            Application.Quit();
         }
     }
 }
