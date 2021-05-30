@@ -8,10 +8,10 @@ namespace Ui
     {
         [SerializeField] private Button _startButton;
         [SerializeField] private Button _fightButton;
-        [SerializeField] private Button _rewardButton;
+        [SerializeField] private Button _exitButton;
         [SerializeField] private GameObject _startBackground;
         [SerializeField] private TrailRenderer _trailRenderer;
-        public Button _openInventory;
+        [SerializeField] private Button _openInventory;
 
         public void InitGameStart(UnityAction startGame)
         {
@@ -23,14 +23,19 @@ namespace Ui
             _fightButton.onClick.AddListener(startFight);
         }
 
-        public void InitRewardWindow(UnityAction showReward)
+        public void ExitApplication(UnityAction showReward)
         {
-            _rewardButton.onClick.AddListener(showReward);
+            _exitButton.onClick.AddListener(showReward);
         }
 
         public void OpenInventory(UnityAction open)
         {
             _openInventory.onClick.AddListener(open);
+        }
+
+        public void CloseInventory(UnityAction close)
+        {
+            _openInventory.onClick.AddListener(close);
         }
 
         protected void OnDestroy()

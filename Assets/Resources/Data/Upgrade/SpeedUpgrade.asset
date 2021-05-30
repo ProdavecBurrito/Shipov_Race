@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemConfig: {fileID: 11400000, guid: b9976fba33ed1eb40b717df754a3fdfb, type: 2}
   type: 1
-  value: 5
+  value: 20

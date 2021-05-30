@@ -65,12 +65,10 @@ public class InventoryView : MonoBehaviour, IInventoryView, ISidePanelTween
     public void Display(List<IItem> itemInfoCollection)
     {
         _itemInfoCollection = itemInfoCollection;
-        Debug.Log(itemInfoCollection.Count);
         for (int i = 0; i < _inventoryItems.Count; i++)
         {
             _inventoryItems[i].Button.image.sprite = _itemInfoCollection[i].Sprite;
             _inventoryItems[i].Item = _itemInfoCollection[i];
-            Debug.Log(i);
         }
     }
 }

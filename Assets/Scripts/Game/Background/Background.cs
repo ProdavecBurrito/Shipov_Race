@@ -4,13 +4,9 @@ namespace Game.Background
 {
     internal class Background : MonoBehaviour
     {
-        [SerializeField]
-        private float _leftBorder;
-        [SerializeField]
-        private float _rightBorder;
-
-        [SerializeField]
-        private float _relativeSpeedRate;
+        [SerializeField]private float _leftBorder;
+        [SerializeField] private float _rightBorder;
+        [SerializeField] private float _relativeSpeedRate;
 
         public void Move(float speedValue)
         {
