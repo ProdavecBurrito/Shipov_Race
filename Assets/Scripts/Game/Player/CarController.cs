@@ -5,18 +5,19 @@ namespace Game
 {
     internal sealed class CarController : BaseController, IAbilityActivator
     {
-        private readonly ResourcePath _viewPath = new ResourcePath { PathResource = "Prefabs/Car" };
+        private GameObject _carObject;
         private CarView _carView;
         private Transform CarPlaceForGun;
 
-        public CarController()
+        public CarController(GameObject carObject)
         {
-           _carView = LoadView();
+            _carObject = carObject;
+            _carView = LoadView();
         }
 
         private CarView LoadView()
         {
-            GameObject objView = Object.Instantiate(ResourceLoader.LoadPrefab(_viewPath));
+            GameObject objView = Object.Instantiate(_carObject);
             CarPlaceForGun = objView.GetComponentInChildren<Transform>().GetChild(0);
             AddGameObjects(objView);
             return objView.GetComponent<CarView>();
