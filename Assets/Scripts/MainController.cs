@@ -14,9 +14,11 @@ internal sealed class MainController : BaseController
     private readonly Transform _placeForInventory;
     private readonly PlayerProfile _playerProfile;
     private Camera _mainCamera;
+    private GameObject _car;
 
-    public MainController(Transform placeForUi, Transform placeForInventory, Transform placeForReward, PlayerProfile profilePlayer, Camera mainCamera)
+    public MainController(Transform placeForUi, Transform placeForInventory, Transform placeForReward, PlayerProfile profilePlayer, Camera mainCamera, GameObject car)
     {
+        _car = car;
         _mainCamera = mainCamera;
         _playerProfile = profilePlayer;
         _placeForUi = placeForUi;
@@ -37,7 +39,7 @@ internal sealed class MainController : BaseController
                 _fightController?.Dispose();
                 break;
             case GameState.Game:
-                _gameController = new GameController(_placeForUi, _playerProfile);
+                _gameController = new GameController(_placeForUi, _playerProfile, _car);
                 _mainMenuController?.Dispose();
                 break;
             case GameState.Fight:

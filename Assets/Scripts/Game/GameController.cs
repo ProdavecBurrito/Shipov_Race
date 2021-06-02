@@ -8,7 +8,7 @@ namespace Game
 {
     internal sealed class GameController : BaseController
     {
-        public GameController(Transform placeForUi, PlayerProfile profilePlayer)
+        public GameController(Transform placeForUi, PlayerProfile profilePlayer, GameObject car)
         {
             var leftMoveDiff = new SubscriptionProperty<float>();
             var rightMoveDiff = new SubscriptionProperty<float>();
@@ -16,7 +16,7 @@ namespace Game
             AddController(tapeBackgroundController);
             var inputGameController = new InputController(leftMoveDiff, rightMoveDiff, profilePlayer.CurrentCar);
             AddController(inputGameController);
-            var carController = new CarController();
+            var carController = new CarController(car);
             AddController(carController);
 
             var abilityController = ConfigureAbilityController(placeForUi, carController, profilePlayer.CurrentCar, carController.GetGunPosition());
