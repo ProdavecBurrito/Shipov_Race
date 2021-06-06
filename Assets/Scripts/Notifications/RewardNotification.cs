@@ -2,35 +2,22 @@ using System;
 using Unity.Notifications.Android;
 using Unity.Notifications.iOS;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class NotificationWindow : MonoBehaviour
+public class RewardNotification
 {
-    private const string ANDROID_NOTIFIER_ID = "android_notifier_id";
+    private const string ANDROID_NOTIFIER_ID = "reward_notifier";
 
-    [SerializeField] private Button _buttonNotification;
-
-    private void Start()
-    {
-        _buttonNotification.onClick.AddListener(CreateNotification);
-    }
-
-    private void OnDestroy()
-    {
-        _buttonNotification.onClick.RemoveAllListeners();
-    }
-
-    private void CreateNotification()
+    public void CreateNotification()
     {
 #if UNITY_ANDROID
         var androidSettingsChanel = new AndroidNotificationChannel
         {
             Id = ANDROID_NOTIFIER_ID,
-            Name = "Game Notifier",
+            Name = "Reward Notifier",
             Importance = Importance.High,
             CanBypassDnd = true,
             CanShowBadge = true,
-            Description = "Enter the game and get free crystals",
+            Description = "Enter the game and get you day reward",
             EnableLights = true,
             EnableVibration = true,
             LockScreenVisibility = LockScreenVisibility.Public
@@ -45,16 +32,20 @@ public class NotificationWindow : MonoBehaviour
             Color = Color.black,
         };
         AndroidNotificationCenter.SendNotification(androidSettingsNotification, ANDROID_NOTIFIER_ID);
+        var iosSettingsNotification = new iOSNotification
+        {
+            Data = DateTime.Now.ToString(),
+        };
 
 #elif UNITY_IOS
        var iosSettingsNotification = new iOSNotification
        {
-           Identifier = "android_notifier_id",
-           Title = "Game Notifier",
+           Identifier = "reward_notifier",
+           Title = "Reward Notifier",
            Subtitle = "Subtitle notifier",
-           Body = "Enter the game and get free crystals",
+           Body = "Enter the game and get you day reward",
            Badge = 1,
-           Data = "01/02/2021",
+           Data = DateTime.Now.ToString(),
            ForegroundPresentationOption = PresentationOption.Alert,
            ShowInForeground = false
        };
@@ -63,4 +54,3 @@ public class NotificationWindow : MonoBehaviour
 #endif
     }
 }
-

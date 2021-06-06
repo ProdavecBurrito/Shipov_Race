@@ -44,7 +44,6 @@ public class LocalizationWindow : MonoBehaviour
         if (loadingOperation.Status == AsyncOperationStatus.Succeeded)
         {
             var table = loadingOperation.Result;
-            Debug.Log(table);
             _text.text = table.GetEntry("translate")?.GetLocalizedString();
         }
         else
