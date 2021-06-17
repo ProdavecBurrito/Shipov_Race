@@ -7,12 +7,14 @@ public class DailyRewardController
 {
     private DailyRewardView _dailyRewardView;
     private List<ContainerSlotRewardView> _slots;
+    private RewardNotification _rewardNotification;
     private bool _isGetReward;
 
     public DailyRewardController(DailyRewardView generateLevelView)
     {
         _dailyRewardView = generateLevelView;
         _dailyRewardView.InitSlider();
+        _rewardNotification = new RewardNotification();
     }
 
     public void RefreshView()
@@ -60,6 +62,8 @@ public class DailyRewardController
 
         if (_isGetReward)
         {
+            _rewardNotification.CreateNotification();
+            Debug.Log("лол кек азаза");
             _dailyRewardView.TimerNewReward.text = "The reward is received today";
         }
         else

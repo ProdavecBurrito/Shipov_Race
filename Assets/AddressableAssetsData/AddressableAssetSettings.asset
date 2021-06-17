@@ -16,21 +16,40 @@ MonoBehaviour:
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
+  m_CatalogRequestsTimeout: 0
   m_DisableCatalogUpdateOnStart: 0
   m_IgnoreUnsupportedFilesInBuild: 0
   m_UniqueBundleIds: 0
+  m_NonRecursiveBuilding: 0
   m_maxConcurrentWebRequests: 500
   m_ContiguousBundles: 0
+  m_ShaderBundleNaming: 0
+  m_ShaderBundleCustomNaming: 
+  m_MonoScriptBundleNaming: 0
+  m_MonoScriptBundleCustomNaming: 
   m_RemoteCatalogBuildPath:
     m_Id: 
   m_RemoteCatalogLoadPath:
     m_Id: 
+  m_ContentStateBuildPath: 
   m_overridePlayerVersion: 
   m_GroupAssets:
   - {fileID: 11400000, guid: 68c36d68ef845c143b27c2f54072cee6, type: 2}
   - {fileID: 11400000, guid: 736a16df082a90841bf4227f7d8efcf5, type: 2}
   - {fileID: 11400000, guid: d297c4817af5fc74f8e7cc370ee23d2a, type: 2}
   - {fileID: 11400000, guid: 318568de6cd40d941aaefab4459014a3, type: 2}
+  - {fileID: 11400000, guid: 4225409d501f2c342be13e1b88af77b6, type: 2}
+  - {fileID: 11400000, guid: 1dd86fff7fdc3a34d8a1c19a4347fad2, type: 2}
+  - {fileID: 11400000, guid: 71eb4a96920fc794586ab7d9339524e3, type: 2}
+  - {fileID: 11400000, guid: 643d3070b5308b64e9c348c1eb75492e, type: 2}
+  - {fileID: 11400000, guid: b10dc4e802a19f341a77aff3b8eb5a5c, type: 2}
+  - {fileID: 11400000, guid: 3984e25d267467e43b2f045998b233aa, type: 2}
+  - {fileID: 11400000, guid: 56626d26e1de4e648bf996f0dac7ca2a, type: 2}
+  - {fileID: 11400000, guid: d28b600e5c8198147b83db44305ea314, type: 2}
+  - {fileID: 11400000, guid: ff0081f9ce53d1248a66470c497b7242, type: 2}
+  - {fileID: 11400000, guid: d8aeca5cd8852ac4497573c63b83ca26, type: 2}
+  - {fileID: 11400000, guid: f0c1b94bd8c11d644aa048d6bcb10d41, type: 2}
+  - {fileID: 11400000, guid: c5d70e3b97f92b549bc8e33302d65f7e, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -74,6 +93,12 @@ MonoBehaviour:
     - default
     - Prefab
     - Remote game loading
+    - Locale
+    - Locale-ru-RU
+    - Locale-fr
+    - Locale-en
+    - Preload
+    - Locale-ru
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 35675f07aaf573840aef2bef2efc2d5c, type: 2}

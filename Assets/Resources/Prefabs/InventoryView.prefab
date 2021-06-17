@@ -966,8 +966,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.8}
-  m_SizeDelta: {x: 160, y: 50}
+  m_AnchoredPosition: {x: -1.4446, y: 13.393}
+  m_SizeDelta: {x: 162.8892, y: 71.186}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6722135130815541008
 CanvasRenderer:
@@ -998,7 +998,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4667828bc24094141963ca09c6559807, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 1
@@ -1010,9 +1010,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Close
-
-'
+  m_Text: Close
 --- !u!1 &6722135130839120331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,6 +1142,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6722135131847929646}
   - component: {fileID: 789975132979804115}
+  - component: {fileID: 1625698061213695169}
   m_Layer: 5
   m_Name: InventoryView
   m_TagString: Untagged
@@ -1196,6 +1195,20 @@ MonoBehaviour:
   - {fileID: 1233086471954204196}
   _openPosition: {x: 280, y: 28}
   _closePosition: {x: 1200, y: 28}
+--- !u!114 &1625698061213695169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6722135131847929647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bfe60a32f2a66a4f98d3586784ed902, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _close: {fileID: 6722135130815541009}
+  _inventory: {fileID: 3156532470878066939}
 --- !u!1 &7201004870467957675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1263,8 +1276,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Inventory
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

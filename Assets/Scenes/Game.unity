@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dataObjectBundle:
-    NameAssetBundle: ONIME
+    NameAssetBundle: Car
     LoadingObject: {fileID: 482601757975641992, guid: 599d484453824cc458fda9225399625d, type: 3}
 --- !u!1 &2038144866
 GameObject:
